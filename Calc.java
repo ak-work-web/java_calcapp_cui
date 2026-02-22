@@ -16,12 +16,13 @@ public class Calc {
     break;
 
    // 数字チェック
-   if (!input1.matches("^-?\\d+(\\.\\d+)?$")) {
-    System.out.print("エラー：有効な数字を入力してください。");
+   double num1;
+   try {
+    num1 = Double.parseDouble(input1);
+   } catch (NumberFormatException e) {
+    System.out.println("エラー：有効な数字を入力してください。");
     continue;
    }
-
-   double num1 = Double.parseDouble(input1);
 
    // 演算子入力
    String operator;
@@ -45,16 +46,19 @@ public class Calc {
    // 2つ目の数字入力
    System.out.println("2つ目の数字を入力してください：");
    String input2 = scanner.nextLine();
-   
-   //終了コマンド
-   if (input2.equals("q")) break;
-   
+
+   // 終了コマンド
+   if (input2.equals("q"))
+    break;
+
    // 数字チェック
-   if (!input2.matches("^-?\\d+(\\.\\d+)?$")) {
-    System.out.print("エラー：有効な数字を入力してください。");
+   double num2;
+   try {
+    num2 = Double.parseDouble(input2);
+   } catch (NumberFormatException e) {
+    System.out.println("エラー：有効な数字を入力してください。");
     continue;
    }
-   double num2 = Double.parseDouble(input2);
 
    double result = 0;
    if (operator.equals("+")) {

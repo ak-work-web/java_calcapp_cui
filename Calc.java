@@ -13,23 +13,9 @@ public class Calc {
     break;
 
    // 演算子入力
-   String operator;
-   while (true) {
-    System.out.print("演算子（+,-,*,/）を入力してください：");
-    operator = scanner.nextLine();
-    if (operator.equals("q")) {
-     break;
-    }
-    if (operator.equals("+") || operator.equals("-") ||
-      operator.equals("*") || operator.equals("/")) {
-     break;
-    }
-    System.out.print("正しい演算子を入力してください。");
-   }
-   // 終了コマンド
-   if (operator.equals("q")) {
+   String operator = getOperator(scanner);
+   if (operator.equals("q"))
     break;
-   }
 
    // 2つ目の数字入力
    Double num2 = getNumber(scanner, "2つ目の数字を入力してください：");
@@ -59,6 +45,7 @@ public class Calc {
 
  }
 
+ // 数字入力メソッド
  public static Double getNumber(Scanner scanner, String message) {
   while (true) {
    System.out.println(message);
@@ -77,4 +64,20 @@ public class Calc {
 
   }
  }
+
+ // 演算子入力メソッド
+ public static String getOperator(Scanner scanner) {
+  while (true) {
+   System.out.print("演算子（+,-,*,/）を入力してください：");
+   String operator = scanner.nextLine();
+
+   if (operator.equals("+") || operator.equals("-") ||
+     operator.equals("*") || operator.equals("/") || operator.equals("q")) {
+    return operator;
+   }
+   System.out.print("正しい演算子を入力してください。");
+  }
+
+ }
+
 }

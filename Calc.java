@@ -8,21 +8,9 @@ public class Calc {
 
   while (true) {
    // 1つ目の数字入力
-   System.out.println("1つ目の数字を入力してください：");
-   String input1 = scanner.nextLine();
-
-   // 終了コマンド
-   if (input1.equals("q"))
+   Double num1 = getNumber(scanner, "1つ目の数字を入力してください：");
+   if (num1 == null)
     break;
-
-   // 数字チェック
-   double num1;
-   try {
-    num1 = Double.parseDouble(input1);
-   } catch (NumberFormatException e) {
-    System.out.println("エラー：有効な数字を入力してください。");
-    continue;
-   }
 
    // 演算子入力
    String operator;
@@ -44,21 +32,9 @@ public class Calc {
    }
 
    // 2つ目の数字入力
-   System.out.println("2つ目の数字を入力してください：");
-   String input2 = scanner.nextLine();
-
-   // 終了コマンド
-   if (input2.equals("q"))
+   Double num2 = getNumber(scanner, "2つ目の数字を入力してください：");
+   if (num2 == null)
     break;
-
-   // 数字チェック
-   double num2;
-   try {
-    num2 = Double.parseDouble(input2);
-   } catch (NumberFormatException e) {
-    System.out.println("エラー：有効な数字を入力してください。");
-    continue;
-   }
 
    double result = 0;
    if (operator.equals("+")) {
@@ -76,13 +52,29 @@ public class Calc {
    } else {
 
    }
-   // System.out.println("計算結果：" + (num1 + num2) + "です。");
    System.out.println("計算結果：" + result + "です。");
   }
-  // System.out.println("計算結果：" + result + "です。");
   System.out.println("電卓アプリを終了します。ありがとうございました。");
   scanner.close();
 
  }
 
+ public static Double getNumber(Scanner scanner, String message) {
+  while (true) {
+   System.out.println(message);
+   String input = scanner.nextLine();
+
+   if (input.equals("q")) {
+    return null;
+   }
+
+   try {
+    return Double.parseDouble(input);
+   } catch (NumberFormatException e) {
+    System.out.println("エラー：有効な数字を入力してください。");
+    continue;
+   }
+
+  }
+ }
 }

@@ -22,24 +22,11 @@ public class Calc {
    if (num2 == null)
     break;
 
-   double result = 0;
-   if (operator.equals("+")) {
-    result = num1 + num2;
-   } else if (operator.equals("-")) {
-    result = num1 - num2;
-   } else if (operator.equals("*")) {
-    result = num1 * num2;
-   } else if (operator.equals("/")) {
-    if (num2 == 0) {
-     System.out.print("エラー：0で割ることはできません。");
-     continue; // ループ最初に戻る
-    }
-    result = num1 / num2;
-   } else {
+   // 計算処理
+   calculate(num1, num2, operator);
 
-   }
-   System.out.println("計算結果：" + result + "です。");
   }
+
   System.out.println("電卓アプリを終了します。ありがとうございました。");
   scanner.close();
 
@@ -80,4 +67,23 @@ public class Calc {
 
  }
 
+ // 計算処理メソッド
+ public static void calculate(double num1, double num2, String operator) {
+  double result = 0;
+
+  if (operator.equals("+")) {
+   result = num1 + num2;
+  } else if (operator.equals("-")) {
+   result = num1 - num2;
+  } else if (operator.equals("*")) {
+   result = num1 * num2;
+  } else if (operator.equals("/")) {
+   if (num2 == 0) {
+    System.out.print("エラー：0で割ることはできません。");
+    return; // ループ最初に戻る
+   }
+   result = num1 / num2;
+  }
+  System.out.println("計算結果：" + result + "です。");
+ }
 }
